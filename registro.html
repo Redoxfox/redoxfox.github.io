@@ -105,7 +105,10 @@
       // Mostrar mensaje de éxito
       alert('¡Registro exitoso! Los datos se han guardado correctamente.');
       // Opcionalmente, redirigir a la página de inicio de sesión
-      window.location.href = 'login.html';
+      setTimeout(function() {
+        window.location.href = 'login.html'; // Redirigir a la página de login
+     }, 2000);
+      //window.location.href = 'login.html';
   }
 
   </script>

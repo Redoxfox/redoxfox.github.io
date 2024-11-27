@@ -1,73 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Principal - Sistema de Gestión de Matrículas</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Residuos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 450px;
+    }
+	  .popup-img {
+      width: 200px; /* Ajusta el tamaño según sea necesario */
+      height: auto;
+    }
+  </style>
 </head>
-<body class="bg-light">
-    <!-- Encabezado -->
-    <header class="bg-success text-white text-center py-4">
-        <h1 class="mb-0">Bienvenido al Sistema de Gestión de Matrículas</h1>
-    </header>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Gestión de Residuos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#map-section">Mapa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#schedule-section">Horarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="residuos.html">Consejos</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Barra de Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand text-success" href="#">Sistema de Matrículas</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-success" href="login.html">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-success" href="registro.html">Regístrate</a>
-                    </li>
-                </ul>
-            </div>
+  <!-- Sección de mapa -->
+  <section id="map-section" class="container mt-4">
+    <h2 class="text-center">Mapa Interactivo</h2>
+    <p class="text-center">Señala los puntos críticos de manejo de residuos.</p>
+    <div id="map"></div>
+  </section>
+
+  <!-- Sección de horarios -->
+  <section id="schedule-section" class="container mt-5">
+    <h2 class="text-center">Horarios de Recolección</h2>
+    <p class="text-center">Consulta qué tipo de residuos sacar y en qué días.</p>
+    <table class="table table-bordered table-hover text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Día</th>
+          <th>Tipo de Residuos</th>
+          <th>Horario</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lunes</td>
+          <td>Orgánicos</td>
+          <td>8:00 AM - 12:00 PM</td>
+        </tr>
+        <tr>
+          <td>Miércoles</td>
+          <td>Reciclables</td>
+          <td>2:00 PM - 6:00 PM</td>
+        </tr>
+        <tr>
+          <td>Viernes</td>
+          <td>Residuos Generales</td>
+          <td>8:00 AM - 12:00 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Sección de consejos -->
+  <section id="tips-section" class="container mt-5">
+    <h2 class="text-center">Consejos sobre Reciclaje</h2>
+    <p class="text-center">Mejora tus prácticas sostenibles.</p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Reduce</h5>
+            <p class="card-text">Evita el uso de plásticos de un solo uso y prioriza productos duraderos.</p>
+          </div>
         </div>
-    </nav>
-
-    <!-- Contenido Principal -->
-    <main class="container text-center my-5">
-        <h2 class="text-success mb-4">¿Comó me matriculo?</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <p class="mb-4"><strong>Si eres nuevo sigue estos pasos</strong></p>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">1. Registrate</li>
-                    <li class="nav-item">2. Inicia sesión</li>
-                    <li class="nav-item">3. Seleciona cursos</li>
-                    <li class="nav-item">4. Genera recibo pago</li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <p class="mb-4"><strong>Si eres antiguo sigue estos pasos</strong></p>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">1. Inicia sesión</li>
-                    <li class="nav-item">2. Seleciona cursos</li>
-                    <li class="nav-item">3. Genera recibo pago</li>
-                </ul>
-            </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Reutiliza</h5>
+            <p class="card-text">Dale una segunda vida a objetos antes de desecharlos.</p>
+          </div>
         </div>
-        
-        <br>
-        
-       
-        <img src="Un.png" alt="Imagen de bienvenida" class="img-fluid rounded shadow">
-    </main>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Recicla</h5>
+            <p class="card-text">Clasifica tus residuos correctamente para facilitar su reciclaje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Pie de Página -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p class="mb-0">&copy; 2024 Sistema de Gestión de Matrículas. Todos los derechos reservados.</p>
-    </footer>
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2024 Gestión de Residuos. Todos los derechos reservados.</p>
+  </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Inicializar el mapa con Leaflet
+    const map = L.map('map').setView([6.229592, -75.444054], 45); // Coordenadas aproximadas de Guarne
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Ejemplo: Agregar un marcador
+    L.marker([6.229799, -75.443829]).addTo(map)
+      .bindPopup('Punto Crítico: Vereda Bella Vista.')
+      .openPopup();
+	  
+	L.marker([6.230413, -75.444830]).addTo(map)
+      .bindPopup('Punto Crítico: Vereda Bella Vista.')
+      .openPopup();
+	  
+	L.marker([6.230451, -75.442925]).addTo(map)
+      .bindPopup('Punto Crítico: Vereda Bella Vista.')
+      .openPopup();
+	  
+	L.marker([6.228433, -75.444912]).addTo(map)
+      .bindPopup('Punto Crítico: Vereda Bella Vista.')
+      .openPopup();
+	const markerCoords = [6.2645, -75.4273];
+	
+  // Contenido del popup (incluye una imagen)
+    const popupContent = '<div>'+
+        +'<h5>Punto de Interes</h5>'
+        '<img src="https://img.freepik.com/psd-gratis/composicion-hojas-etiqueta_23-2147658817.jpg?t=st=1732079246~exp=1732082846~hmac=2d9d64f010785c2123236ee2690ae8af4862d71e086e158e5fde3f2bcdc2503a&w=826" alt="Ejemplo" class="popup-img">'
+        +'<p>Descripción breve del lugar.</p>'+
+      '</div>';
+	
+	    // Crear marcador con popup
+       const marker = L.marker(markerCoords).addTo(map);
+
+      // Vincular el popup al marcador
+      marker.bindPopup(popupContent);
+
+      // Mostrar popup al pasar el mouse sobre el marcador
+      marker.on('mouseover', function () {
+        this.openPopup();
+      });
+
+    // Cerrar el popup al quitar el mouse
+      marker.on('mouseout', function () {
+      this.closePopup();
+      });
+	
+	
+	  
+  </script>
 </body>
 </html>
